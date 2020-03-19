@@ -1,6 +1,8 @@
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.ArrayList;
+
 import static org.junit.Assert.assertEquals;
 
 public class HotelTest {
@@ -33,5 +35,46 @@ public class HotelTest {
         Bedroom foundRoom = hotel.findBedroom(23);
         assertEquals(singleBedroom, foundRoom);
     }
+
+    @Test
+    public void canFindAConferenceRoom(){
+        ConferenceRoom foundConferenceRoom = hotel.findConferenceRoom("The Room Of Pedro");
+        assertEquals(conferenceRoom, foundConferenceRoom);
+    }
+
+    @Test
+    public void canGuestsCheckIntoABedroom(){
+        ArrayList<Guest> guests = new ArrayList<Guest>();
+        guests.add(bob);
+        hotel.checkInGuestsToBedroom(23, guests);
+        assertEquals(1, singleBedroom.guestListSize());
+    }
+
+    @Test
+    public void canGuestsCheckOutABedroom(){
+        ArrayList<Guest> guests = new ArrayList<Guest>();
+        guests.add(bob);
+        hotel.checkInGuestsToBedroom(23, guests);
+        hotel.checkOutGuestsFromBedroom(23);
+        assertEquals(0, singleBedroom.guestListSize());
+    }
+
+    @Test
+    public void canGuestsCheckIntoAConferenceRoom(){
+        ArrayList<Guest> guests = new ArrayList<Guest>();
+        guests.add(sandra);
+        hotel.checkInGuestsToConferenceRoom("The Room Of Pedro", guests);
+        assertEquals(1, conferenceRoom.guestListSize());
+    }
+
+    @Test
+    public void canGuestsCheckOutAConferenceRoom(){
+        ArrayList<Guest> guests = new ArrayList<Guest>();
+        guests.add(sandra);
+        hotel.checkInGuestsToConferenceRoom("The Room Of Pedro", guests);
+        assertEquals(1, conferenceRoom.guestListSize());
+    }
+
+
 
 }

@@ -34,4 +34,10 @@ public class ConferenceRoomTest {
         assertEquals(true, conferenceroom.conferenceRoomFull());
     }
 
+//    @Test
+//    public void canCheckInGuest_underCapacity() {
+//        conferenceRoom.checkInGuest(guest1);
+//        assertEquals(1, conferenceRoom.guestListSize());
+//    }
+
 }

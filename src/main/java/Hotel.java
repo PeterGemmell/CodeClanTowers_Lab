@@ -28,4 +28,50 @@ public class Hotel {
         }
         return foundRoom;
     }
+
+    public ConferenceRoom findConferenceRoom(String roomName){
+        ConferenceRoom foundConferenceRoom = null;
+        for(ConferenceRoom conferenceRoom : this.conferenceRooms){
+            if(conferenceRoom.getName() == roomName){
+                foundConferenceRoom = conferenceRoom;
+            }
+        }
+        return foundConferenceRoom;
+
+    }
+
+    public void checkInGuestsToBedroom(int roomNumber, ArrayList<Guest> guests){
+        Bedroom bedroom = findBedroom(roomNumber);
+        if(bedroom != null && bedroom.isVacant()){
+            for(Guest guest: guests){
+                bedroom.checkInGuest(guest);
+            }
+        }
+
+    }
+
+    public void checkOutGuestsFromBedroom(int roomNumber){
+        Bedroom bedroom = findBedroom(roomNumber);
+        if(bedroom != null){
+            bedroom.checkOutGuests();
+        }
+
+    }
+
+    public void checkInGuestsToConferenceRoom(String roomName, ArrayList<Guest> guests){
+        ConferenceRoom conferenceRoom = findConferenceRoom(roomName);
+        if(conferenceRoom != null){
+            for(Guest guest: guests){
+                conferenceRoom.checkInGuest(guest);
+            }
+        }
+
+    }
+
+    public void checkOutGuestsToConferenceRoom(String roomName){
+        ConferenceRoom conferenceRoom = findConferenceRoom(roomName);
+        if(conferenceRoom != null){
+          conferenceRoom.checkOutGuests();
+        }
+    }
 }

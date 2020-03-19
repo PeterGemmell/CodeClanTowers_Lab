@@ -70,7 +70,7 @@ public class HotelTest {
 
     @Test
     public void canCheckGuestsIntoBedroom() {
-        ArrayList<Guest> guests = new ArrayList<Guest>();
+        ArrayList<Guest> guests = new ArrayList<~>();
         guests.add(guest1);
         hotel.checkInGuestsToBedroom(1, guests);
         assertEquals(1, singleRoom.guestListSize());

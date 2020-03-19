@@ -26,5 +26,25 @@ public class ConferenceRoom {
         }else{
             return true;
         }
+
+      }
+    public String getName(){
+        return name;
     }
+    public int guestListSize() {
+        return this.guests.size();
+    }
+
+    public void checkInGuest(Guest guest) {
+        if (this.guestListSize() < this.capacity) {
+            this.guests.add(guest);
+        }
+    }
+
+    public void checkOutGuests() {
+        if (this.guestListSize() > 0) {
+            this.guests.clear();
+        }
+    }
+
 }

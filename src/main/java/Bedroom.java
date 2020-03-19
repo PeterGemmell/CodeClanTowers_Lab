@@ -41,6 +41,26 @@ public class Bedroom {
     public int getCapacity() {
         return capacity;
     }
+
+    public void checkInGuest(Guest guest) {
+        if (this.guestListSize() < this.capacity) {
+            this.guests.add(guest);
+        }
+    }
+
+    public int guestListSize(){
+        return this.guests.size();
+    }
+
+    public boolean isVacant() {
+        return this.guestListSize() == 0;
+    }
+
+    public void checkOutGuests() {
+        if (!this.isVacant()) {
+            this.guests.clear();
+        }
+    }
 //
 //    public void setCapacity(int capacity) {
 //        this.capacity = capacity;
